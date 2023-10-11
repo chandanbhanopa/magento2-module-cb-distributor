@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+     <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">shop_listing.shop_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/newaction"/>
+                <class>primary</class>
+                <label translate="true">Create new Shop</label>
+            </button>
+        </buttons>
+        <spinner>shop_columns</spinner>
+        <deps>
+            <dep>shop_listing.shop_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="shop_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">\Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">shop_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+         <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filters name="listing_filters">
+            <filterSelect name="status" provider="${ $.parentName }" component="Magento_Ui/js/form/element/ui-select" template="ui/grid/filters/elements/ui-select">
+                <settings>
+                    <options class="Chandan\Distributor\Model\Config\Source\StatusOptions"/>
+                    <caption translate="true">Select...</caption>
+                    <label translate="true">Select Status</label>
+                    <dataScope>private_group</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+            <filterSelect name="distributor_id" provider="${ $.parentName }" component="Magento_Ui/js/form/element/ui-select" template="ui/grid/filters/elements/ui-select">
+                <settings>
+                    <options class="Chandan\Distributor\Model\Config\Source\DistributorOptions"/>
+                    <caption translate="true">Select...</caption>
+                    <label translate="true">Select Distributor</label>
+                    <dataScope>private_group</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="shop_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="distributor_id" component="Magento_Ui/js/grid/columns/select" >
+            <settings>
+                <label translate="true">Distributor Name</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Chandan\Distributor\Model\Config\Source\DistributorOptions"/>
+            </settings>
+        </column>
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">id</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="shop_name">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">Shop Name</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="owner_name">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">Owner Name</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">Email</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="contact_number">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">Contact Number</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="address">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">Address</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select" >
+            <settings>
+                <label translate="true">Status</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Chandan\Distributor\Model\Config\Source\StatusOptions"/>
+            </settings>
+        </column>
+        <!-- action columns edit and delete -->
+        <actionsColumn name="actions" class="Chandan\Distributor\Ui\Component\Listing\Columns\ShopActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn> 
+    </columns>
+</listing>

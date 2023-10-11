@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+            id="Chandan_Distributor::main" 
+            title="Distributor" 
+            module="Chandan_Distributor" 
+            sortOrder="10" 
+            resource="Chandan_Distributor::main"/>
+        <add 
+            id="Chandan_Distributor::distributor_list" 
+            title="Distributor List" 
+            module="Chandan_Distributor" 
+            sortOrder="11" 
+            action="erp/distributor/index" 
+            parent ="Chandan_Distributor::main"
+            resource="Chandan_Distributor::distributorlist"/>
+        <add 
+            id="Chandan_Distributor::shop_list" 
+            title="Shop List" 
+            module="Chandan_Distributor" 
+            sortOrder="12" 
+            action="erp/shop/index" 
+            parent ="Chandan_Distributor::main"
+            resource="Chandan_Distributor::shoplist"/>
+    </menu>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Chandan_Distributor::main" title="Distributor" sortOrder="99">
+                    <resource id="Chandan_Distributor::distributorlist" title="Distributor List" sortOrder="100" />
+                    <resource id="Chandan_Distributor::distributoredit" title="Distributor Edit" sortOrder="101" />
+                    <resource id="Chandan_Distributor::distributornew" title="Distributor New" sortOrder="102" />
+                    <resource id="Chandan_Distributor::distributor_delete" title="Distributor Delete" sortOrder="103" />
+                    <resource id="Chandan_Distributor::distributorsave" title="Distributor Delete" sortOrder="104" />
+                    <resource id="Chandan_Distributor::new" title="Shop Create" sortOrder="102" />
+                    <resource id="Chandan_Distributor::shop_edit" title="Shop Edit" sortOrder="101" />
+                    <resource id="Chandan_Distributor::shop_save" title="Shop save" sortOrder="101" />
+                    <resource id="Chandan_Distributor::shop_list" title="Shop list" sortOrder="101" />
+                    <resource id="Chandan_Distributor::shop_delete" title="Shop Delete" sortOrder="101" />
+                    
+                    
+                    
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

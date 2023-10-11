@@ -1,0 +1,48 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="distributor" resource="default" engine="innodb"
+            comment="Distributor List">
+        <column xsi:type="int" name="id" unsigned="false" padding="11" nullable="false" identity="true" comment="entity id"/>
+        <column xsi:type="varchar" name="company_name" nullable="false" length="255" comment="Distributor Compnay name"/>
+        <column xsi:type="varchar" name="owner_name" nullable="false" length="255" comment="Owner name"/>
+        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="email id"/>
+        <column xsi:type="varchar" name="contact_number" nullable="false" length="255" comment="Contact Number"/>
+        <column xsi:type="varchar" name="address" nullable="false" length="255" comment="Company address"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" default="0" comment="distributor status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="DISTRIBUTOR_INT_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+    <table name="distributor_shop" resource="default" engine="innodb"
+            comment="Distributor shop">
+        <column xsi:type="int" name="id" unsigned="false" padding="11" nullable="false" identity="true" comment="entity id"/>
+        <column xsi:type="int" name="distributor_id" unsigned="false" padding="11" nullable="false" comment="distributor id"/>
+        <column xsi:type="varchar" name="shop_name" nullable="false" length="255" comment="Shop name"/>
+        <column xsi:type="varchar" name="owner_name" nullable="false" length="255" comment="Owner name"/>
+        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="email id"/>
+        <column xsi:type="varchar" name="contact_number" nullable="false" length="255" comment="Contact Number"/>
+        <column xsi:type="varchar" name="address" nullable="false" length="255" comment="Company address"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" default="0" comment="distributor status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="DISTRIBUTOR_SHOP_INT_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+    <table name="distributor_shop_products" resource="default" engine="innodb"
+            comment="Distributor List">
+        <column xsi:type="int" name="id" unsigned="false" padding="11" nullable="false" identity="true" comment="entity id"/>
+        <column xsi:type="int" name="distributor_id" unsigned="false" padding="11" nullable="false" comment="distributor id"/>
+        <column xsi:type="int" name="product_id" unsigned="false" padding="11" nullable="false" comment="product id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="DISTRIBUTOR_SHOP_PRODUCTS_INT_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

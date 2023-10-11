@@ -1,0 +1,17 @@
+{
+    "name": "chandanbhanopa/magento2-module-cb-distributor",
+    "description": "Admin Grid for Distributor and Shops",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+      "MIT"
+    ],
+    "autoload": {
+      "psr-4": {
+        "Chandan\\Distributor\\": ""
+      },
+      "files": [
+        "registration.php"
+      ]
+    }
+  }
